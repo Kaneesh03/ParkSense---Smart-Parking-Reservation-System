@@ -1,0 +1,312 @@
+.airport-blueprint-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.blueprint-map {
+  position: relative;
+  width: 1300px;
+  height: 700px;
+  background: #3c3c3e; /* Dark Asphalt */
+  border-top: 15px solid #d4d4d4;
+  border-bottom: 25px solid #333;
+  border-left: 25px solid #d4d4d4;
+  border-right: 25px solid #d4d4d4;
+  box-sizing: content-box;
+  font-family: 'Inter', sans-serif;
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  user-select: none;
+}
+
+/* TERMINAL BUILDING */
+.terminal-building {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 450px;
+  height: 70px;
+  background: #fdfdfd;
+  border: 4px solid #1a1a1a;
+  border-top: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 22px;
+  color: #1a1a1a;
+  letter-spacing: 2px;
+  z-index: 20;
+  box-shadow: inset 0 -4px 10px rgba(0,0,0,0.1);
+}
+
+.terminal-door {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 15px;
+  background: #888;
+  border-radius: 5px 5px 0 0;
+}
+
+/* ROAD MARKINGS */
+.road-lane-top {
+  position: absolute;
+  top: 75px;
+  left: 100px;
+  right: 100px;
+  height: 90px;
+  border-top: 4px dashed rgba(255,255,255,0.6);
+  border-bottom: 4px solid #fff;
+  border-radius: 30px;
+  pointer-events: none;
+}
+
+.drop-off-zone {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 550px;
+  height: 90px;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.1),
+    rgba(255,255,255,0.1) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  border: 3px solid rgba(255,255,255,0.4);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 40px;
+}
+
+.drop-off-text {
+  color: #fff;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.zebra-crossing {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 90px;
+  background: repeating-linear-gradient(
+    0deg,
+    #fff,
+    #fff 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+
+/* GATES AND BOOTHS */
+.security-booth {
+  position: absolute;
+  background: #e2e8f0;
+  border: 4px solid #334155;
+  width: 60px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 800;
+  font-size: 10px;
+  color: #1e293b;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.booth-entry {
+  bottom: 80px;
+  left: -25px;
+}
+
+.booth-exit {
+  bottom: 80px;
+  right: -25px;
+}
+
+.gate-barrier {
+  position: absolute;
+  height: 6px;
+  width: 90px;
+  background: repeating-linear-gradient(45deg, #ef4444, #ef4444 10px, #ffffff 10px, #ffffff 20px);
+  z-index: 12;
+}
+
+.barrier-in {
+  bottom: 120px;
+  left: 35px;
+}
+
+.barrier-out {
+  bottom: 120px;
+  right: 35px;
+}
+
+.road-arrow {
+  position: absolute;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.arrow-in-left { left: 50px; top: 400px; }
+.arrow-out-right { right: 50px; top: 400px; transform: rotate(180deg); }
+.arrow-top-left { left: 200px; top: 105px; transform: rotate(90deg); }
+.arrow-top-right { right: 200px; top: 105px; transform: rotate(90deg); }
+
+/* PARKING BLOCKS */
+.parking-islands-container {
+  position: absolute;
+  top: 190px;
+  left: 100px;
+  right: 100px;
+  bottom: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.island-block {
+  width: 30%;
+  height: 100%;
+  background: #4b4b4e; /* Slightly lighter asphalt */
+  border: 12px solid #8ba379; /* Grass boundary */
+  border-radius: 40px;
+  position: relative;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 5px 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.island-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: rgba(255,255,255,0.7);
+  pointer-events: none;
+}
+
+.island-label h2 {
+  font-size: 24px;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.island-label p {
+  font-size: 14px;
+  margin: 4px 0 0 0;
+  font-weight: 600;
+}
+
+/* SLOTS RENDER LAYERS */
+.slots-column-left {
+  position: absolute;
+  left: 20px;
+  top: 40px;
+  bottom: 40px;
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 6px;
+}
+
+.slots-column-right {
+  position: absolute;
+  right: 20px;
+  top: 40px;
+  bottom: 40px;
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 6px;
+}
+
+/* THE SLOT ITSELF */
+.blueprint-slot {
+  position: relative;
+  height: 35px;
+  background: rgba(255,255,255,0.05);
+  border: 2px solid white;
+  border-left: none; /* Open front */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  /* Slant it */
+  transform: skewY(-20deg);
+  margin-bottom: 2px;
+}
+
+/* Right side slots lean opposite */
+.slots-column-right .blueprint-slot {
+  transform: skewY(20deg);
+  border-left: 2px solid white;
+  border-right: none;
+}
+
+.blueprint-slot:hover:not(.slot-booked) {
+  background: rgba(16, 185, 129, 0.3);
+  border-color: #34d399;
+}
+
+.blueprint-slot.slot-booked {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.slot-text {
+  color: white;
+  font-weight: 800;
+  font-size: 14px;
+  /* Anti-skew text so it reads flat */
+  transform: skewY(20deg);
+}
+
+.slots-column-right .slot-text {
+  transform: skewY(-20deg);
+}
+
+.slot-indicator-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 5px #10b981;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slots-column-left .slot-indicator-dot { left: -14px; }
+.slots-column-right .slot-indicator-dot { right: -14px; }
+
+.slot-booked .slot-indicator-dot {
+  background: #ef4444;
+  box-shadow: 0 0 5px #ef4444;
+}

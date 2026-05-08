@@ -1,0 +1,277 @@
+/* Chatbot Launcher Button */
+.ps-chatbot-launcher {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-primary, #2563eb), var(--accent-secondary, #3b82f6));
+  color: white;
+  border: none;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  z-index: 9999;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), subtlePulse 3s infinite alternate ease-in-out;
+}
+
+.ps-chatbot-launcher:hover {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.5);
+  animation: none; /* Stops pulsing on hover so the scale transition is pure */
+}
+
+/* Chatbot Overlay Window */
+.ps-chatbot-window {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 380px;
+  max-width: 90vw;
+  height: 600px;
+  max-height: 75vh;
+  background-color: var(--bg-primary, #ffffff);
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ps-chatbot-header {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  color: white;
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ps-chatbot-close {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.ps-chatbot-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+}
+
+.ps-chatbot-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #f8fafc;
+  scroll-behavior: smooth;
+}
+
+.ps-message {
+  max-width: 85%;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  word-wrap: break-word;
+  animation: messageFadeIn 0.3s ease forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.ps-message-user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, var(--accent-primary, #2563eb), var(--accent-secondary, #3b82f6));
+  color: white;
+  border-radius: 18px 18px 4px 18px;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15);
+}
+
+.ps-message-bot {
+  align-self: flex-start;
+  background: white;
+  color: #334155;
+  border-radius: 18px 18px 18px 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.ps-chatbot-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 16px 16px 16px;
+  background: #f8fafc;
+  justify-content: flex-start;
+}
+
+.ps-chatbot-suggestion-btn {
+  background: #e0e7ff;
+  color: #3730a3;
+  border: 1px solid #c7d2fe;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  animation: messageFadeIn 0.4s ease forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.ps-chatbot-suggestion-btn:hover {
+  background: #4f46e5;
+  color: white;
+  border-color: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
+}
+
+.ps-message-typing {
+  align-self: flex-start;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  animation: messageFadeIn 0.3s ease forwards;
+}
+
+.ps-typing-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #94a3b8;
+  border-radius: 50%;
+  animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+.ps-typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.ps-typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+.ps-chatbot-input-area {
+  padding: 16px;
+  background: white;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  gap: 10px;
+}
+
+.ps-chatbot-input {
+  flex: 1;
+  padding: 12px 18px;
+  border: 1px solid #cbd5e1;
+  border-radius: 24px;
+  outline: none;
+  font-size: 0.95rem;
+  background: #f8fafc;
+  color: #1e293b;
+  transition: all 0.3s ease;
+}
+
+.ps-chatbot-input:focus {
+  border-color: var(--accent-primary, #2563eb);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.ps-chatbot-send {
+  background: var(--accent-primary, #2563eb);
+  color: white;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ps-chatbot-send:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.ps-chatbot-send:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Animations */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes messageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typingBounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+@keyframes subtlePulse {
+  0% {
+    box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3), 0 0 0 0 rgba(37, 99, 235, 0.2);
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5), 0 0 0 8px rgba(37, 99, 235, 0);
+    transform: scale(1.02);
+  }
+}
