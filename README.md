@@ -1,6 +1,6 @@
-# ParkSense – Smart Parking Management System
+# ParkSense – Smart Parking Reservation System
 
-ParkSense is a smart parking management system developed to simplify parking slot booking and management.  
+ParkSense is a smart parking Reservation system developed to simplify parking slot booking and management.  
 The system helps users find available parking slots, book parking spaces, and manage vehicle parking efficiently through a user-friendly interface.
 
 ---
